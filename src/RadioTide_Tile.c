@@ -51,18 +51,16 @@ RadioTide_Tile RadioTide_Tile_getRandomTile() {
  * breaks and -1 is returned.
  */
 int RadioTide_Tile_getRandomTileIdxOfCharacteristic(Characteristic characteristic) {
-    bool found = false;
     int exhaust = 100;
     int tile_count = sizeof(map_tiles) / sizeof(RadioTide_Tile);
 
-    while (!found && exhaust > 0) {
+    while (exhaust > 0) {
         int random_tile_idx = rand() % tile_count +  0;
         if (map_tiles[random_tile_idx].characteristic == characteristic) {
             return random_tile_idx;
         }
         exhaust--;
     }
-
 
     return -0;
 }
