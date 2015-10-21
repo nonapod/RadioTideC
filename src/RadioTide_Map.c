@@ -204,64 +204,12 @@ void RadioTideMap_printMapToTerminal(RadioTide_Map *rt_map) {
 
         for (int x = 0; x < rt_map->x; x++) {
 
-            int color = rt_map->tiles[y][x].color;
             printf("%s ", rt_map->tiles[y][x].term_display);
 
         }
 
         printf("\n");
 
-    }
-
-}
-
-/**
- * RadioTideMap_tileColorCode()
- *
- * returns a char pointer color code that
- * can be printed to the shell, this works
- * for zsh only at the moment, for testing
- * mainly.
- */
-char *RadioTideMap_tileColorCode(Color color) {
-
-    switch (color) {
-        case NONE:
-            return "\033[0m";
-        case WHITE:
-            return "\033[1;37m";
-        case BLACK:
-            return "\033[0;30m";
-        case BLUE:
-            return "\033[0;34m";
-        case LIGHTBLUE:
-            return "\033[1;34m";
-        case GREEN:
-            return "\033[0;32m";
-        case LIGHTGREEN:
-            return "\033[1;32m";
-        case CYAN:
-            return "\033[0;36m";
-        case LIGHTCYAN:
-            return "\033[1;36m";
-        case RED:
-            return "\033[0;31m";
-        case LIGHTRED:
-            return "\033[1;31m";
-        case PURPLE:
-            return "\033[0;35m";
-        case LIGHTPURPLE:
-            return "\033[1;35m";
-        case BROWN:
-            return "\033[0;33m";
-        case YELLOW:
-            return "\033[1;33m";
-        case GRAY:
-            return "\033[0;30m";
-        case LIGHTGRAY:
-            return "\033[0;37m";
-        default:
-            return "\033[0m";
     }
 
 }

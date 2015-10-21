@@ -14,8 +14,6 @@ void RadioTideMap_generateMap(int x, int y, RadioTide_Map *rt_map);
 
 void RadioTideMap_printMapToTerminal(RadioTide_Map *rt_map);
 
-char *RadioTideMap_tileColorCode(Color color);
-
 void RadioTideMap_freeMapTiles(RadioTide_Map *rt_map);
 
 void RadioTideMap_checkProximity(int bound_x, int bound_y, int pos_x, int pos_y, RadioTide_Map *rt_map, RadioTide_Proximity *rt_proximity);

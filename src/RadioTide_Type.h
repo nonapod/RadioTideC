@@ -43,28 +43,6 @@ typedef struct RadioTide_Tile_Struct RadioTide_Tile;
 
 typedef struct CharacteristicChance_Struct CharacteristicChance;
 
-
-typedef enum Color {
-    NONE,
-    BROWN,
-    YELLOW,
-    GREEN,
-    PURPLE,
-    LIGHTPURPLE,
-    RED,
-    BLUE,
-    LIGHTBLUE,
-    BLACK,
-    LIGHTGREEN,
-    CYAN,
-    LIGHTCYAN,
-    WHITE,
-    LIGHTGRAY,
-    LIGHTRED,
-    GRAY,
-    ColorEnumEnd
-} Color;
-
 typedef enum Characteristic {
     ELEVATION,
     WILDERNESS,
@@ -83,7 +61,6 @@ struct RadioTide_Tile_Struct {
     int loot_chance;
     int view_bonus;
     bool blocked;
-    Color color;
     Characteristic characteristic;
 
 } RadioTide_Tile_Struct;
