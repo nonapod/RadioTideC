@@ -6,7 +6,7 @@
 
 
 /**
- * RadioTideMap_initMap()
+ * RadioTideMap_newMap()
  *
  * returns a new map object with the proper
  * characteristics enabled, and some default
@@ -25,7 +25,6 @@ RadioTide_Map RadioTideMap_newMap() {
     rt_map.characteristic_chance = malloc(rows * sizeof(int));
 
     for(size_t i = 0; i < rows; i++) {
-        rt_map.characteristic_chance[i] = 0;
         rt_map.characteristic_chance[i] = 0;
     }
 
@@ -82,7 +81,7 @@ void RadioTideMap_generateMap(int x, int y, RadioTide_Map *rt_map) {
             // add a new tile depending on tile proximity
             RadioTide_Proximity rt_proximity;
             RadioTideMap_checkProximity(x, y, x, y, rt_map, &rt_proximity);
-            rt_map->tiles[y][x] = RadioTide_Tile_getRandomTileByProximity(&rt_proximity, rt_map);
+            rt_map->tiles[y][x] = RadioTideTile_getRandomTileByProximity(&rt_proximity, rt_map);
 
         }
 

@@ -25,11 +25,11 @@ RadioTide_Tile map_tiles[] = {
 /* ------------------- */
 RadioTide_Tile RadioTide_Tile_getRandomTile();
 
-int RadioTide_Tile_getTileIdx(char *);
+int RadioTideTile_getTileIdx(char *);
 
-RadioTide_Tile RadioTide_Tile_getRandomTileByProximity(RadioTide_Proximity *proximity, RadioTide_Map *rt_map);
+RadioTide_Tile RadioTideTile_getRandomTileByProximity(RadioTide_Proximity *proximity, RadioTide_Map *rt_map);
 
-int RadioTide_Tile_getRandomTileIdxOfCharacteristic(Characteristic characteristic);
+int RadioTideTile_getRandomTileIdxOfCharacteristic(Characteristic characteristic);
 
 
 #endif

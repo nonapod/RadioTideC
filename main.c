@@ -14,8 +14,14 @@ int main() {
     int x = 40;
     int y = 15;
 
+    // Generate a map and print it
     RadioTideMap_generateMap(x, y, &rt_map);
     RadioTideMap_printMapToTerminal(&rt_map);
+
+    // Create a weather map only when settled on a map
+    RadioTide_Weather_Map rt_weather_map = RadioTideWeather_newWeatherMap(&rt_map);
+
+
 
     RadioTideMap_releaseMap(&rt_map);
 

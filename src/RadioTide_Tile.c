@@ -7,12 +7,12 @@
 
 
 /**
- * RadioTide_Tile_getTileIdx().
+ * RadioTideTile_getTileIdx().
  *
  * gets a map tile idx if it is defined in the map_tiles
  * variable in tile.h
  */
-int RadioTide_Tile_getTileIdx(char *tile_name) {
+int RadioTideTile_getTileIdx(char *tile_name) {
     int tile_count = sizeof(map_tiles) / sizeof(RadioTide_Tile);
 
     for (int i = 0; i < tile_count; i++) {
@@ -26,12 +26,12 @@ int RadioTide_Tile_getTileIdx(char *tile_name) {
 }
 
 /**
- * RadioTide_Tile_getRandomTile()
+ * RadioTideTile_getRandomTile()
  *
  * gets a random tile from the map_tiles variable defined
  * in tile.h
  */
-RadioTide_Tile RadioTide_Tile_getRandomTile() {
+RadioTide_Tile RadioTideTile_getRandomTile() {
 
     int tile_count = sizeof(map_tiles) / sizeof(RadioTide_Tile);
     int random_tile_idx = (rand() % (tile_count + 1 - 0) + 0) - 1;
@@ -42,7 +42,7 @@ RadioTide_Tile RadioTide_Tile_getRandomTile() {
 }
 
 /**
- * RadioTide_Tile_getRandomTileIdxOfCharacteristic()
+ * RadioTideTile_getRandomTileIdxOfCharacteristic()
  *
  * takes in a characteristic and loops over all of the tiles
  * by random numbers until it arrives at a tile of the given
@@ -50,7 +50,7 @@ RadioTide_Tile RadioTide_Tile_getRandomTile() {
  * an exhaust value is given, when it reaches 0 the while loop
  * breaks and -1 is returned.
  */
-int RadioTide_Tile_getRandomTileIdxOfCharacteristic(Characteristic characteristic) {
+int RadioTideTile_getRandomTileIdxOfCharacteristic(Characteristic characteristic) {
     int exhaust = 100;
     int tile_count = sizeof(map_tiles) / sizeof(RadioTide_Tile);
 
@@ -66,13 +66,13 @@ int RadioTide_Tile_getRandomTileIdxOfCharacteristic(Characteristic characteristi
 }
 
 /**
- * RadioTide_Tile_getRandomTileByProximity()
+ * RadioTideTile_getRandomTileByProximity()
  *
  * gets a random tile from the map_tiles variable defined
  * in tile.h, by cross referencing a proximity set and
  * existing map.
  */
-RadioTide_Tile RadioTide_Tile_getRandomTileByProximity(RadioTide_Proximity *proximity, RadioTide_Map *rt_map) {
+RadioTide_Tile RadioTideTile_getRandomTileByProximity(RadioTide_Proximity *proximity, RadioTide_Map *rt_map) {
 
     // predefine a random tile idx, we'll try to get another one depending on proximity
     int tile_count = sizeof(map_tiles) / sizeof(RadioTide_Tile);
@@ -81,15 +81,15 @@ RadioTide_Tile RadioTide_Tile_getRandomTileByProximity(RadioTide_Proximity *prox
     int tile_idxs[TILE_DIRECTIONS];
 
     // get the proximity tile indexes
-    tile_idxs[0] = RadioTide_Tile_getTileIdx(proximity->up_left);
-    tile_idxs[1] = RadioTide_Tile_getTileIdx(proximity->up);
-    tile_idxs[2] = RadioTide_Tile_getTileIdx(proximity->up_right);
-    tile_idxs[3] = RadioTide_Tile_getTileIdx(proximity->left);
-    tile_idxs[4] = RadioTide_Tile_getTileIdx(proximity->center);
-    tile_idxs[5] = RadioTide_Tile_getTileIdx(proximity->right);
-    tile_idxs[6] = RadioTide_Tile_getTileIdx(proximity->down_left);
-    tile_idxs[7] = RadioTide_Tile_getTileIdx(proximity->down);
-    tile_idxs[8] = RadioTide_Tile_getTileIdx(proximity->down_right);
+    tile_idxs[0] = RadioTideTile_getTileIdx(proximity->up_left);
+    tile_idxs[1] = RadioTideTile_getTileIdx(proximity->up);
+    tile_idxs[2] = RadioTideTile_getTileIdx(proximity->up_right);
+    tile_idxs[3] = RadioTideTile_getTileIdx(proximity->left);
+    tile_idxs[4] = RadioTideTile_getTileIdx(proximity->center);
+    tile_idxs[5] = RadioTideTile_getTileIdx(proximity->right);
+    tile_idxs[6] = RadioTideTile_getTileIdx(proximity->down_left);
+    tile_idxs[7] = RadioTideTile_getTileIdx(proximity->down);
+    tile_idxs[8] = RadioTideTile_getTileIdx(proximity->down_right);
 
     for (int i = 0; i < TILE_DIRECTIONS; i++) {
 
@@ -101,7 +101,7 @@ RadioTide_Tile RadioTide_Tile_getRandomTileByProximity(RadioTide_Proximity *prox
 
             // set the final tile idx to the new random tile type
             if (chance > roll) {
-                int new_tile_idx = RadioTide_Tile_getRandomTileIdxOfCharacteristic(characteristic);
+                int new_tile_idx = RadioTideTile_getRandomTileIdxOfCharacteristic(characteristic);
                 if (new_tile_idx > -1) {
                     final_tile_idx = new_tile_idx;
                 }

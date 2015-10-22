@@ -43,6 +43,10 @@ typedef struct RadioTide_Tile_Struct RadioTide_Tile;
 
 typedef struct CharacteristicChance_Struct CharacteristicChance;
 
+typedef struct RadioTide_Weather_Struct RadioTide_Weather_Map;
+
+typedef struct RadioTide_Weather_Tile_Struct RadioTide_Weather_Tile;
+
 typedef enum Characteristic {
     ELEVATION,
     WILDERNESS,
@@ -51,6 +55,24 @@ typedef enum Characteristic {
     WATER,
     CharacteristicEnumEnd
 } Characteristic;
+
+typedef enum WeatherType {
+    RAIN,
+    WIND,
+    SANDSTORM,
+    FOG,
+    CLEAR,
+    OVERCAST,
+    SNOW,
+    WeatherTypeEnumEnd
+} WeatherType;
+
+typedef enum Season {
+    SPRING,
+    SUMMER,
+    AUTUMN,
+    WINTER
+} Season;
 
 struct RadioTide_Tile_Struct {
 
@@ -97,6 +119,20 @@ struct RadioTide_Proximity_Struct {
     char down_right[TILE_NAME_SIZE];
 
 } RadioTide_Proximity_Struct_Default = {"\0", "\0", "\0", "\0", "\0", "\0", "\0", "\0", "\0"};
+
+struct RadioTide_Weather_Tile_Struct {
+
+    WeatherType type;
+
+} RadioTide_Weather_Tile_Default;
+
+struct RadioTide_Weather_Struct {
+
+    RadioTide_Map *rt_map;
+    RadioTide_Weather_Tile **tiles;
+    Season season;
+
+} RadioTide_Weather_Struct_Default;
 
 
 #endif
