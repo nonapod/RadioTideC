@@ -5,7 +5,6 @@
 #include "RadioTide_Map.c"
 #include "RadioTide_Tile.c"
 #include "RadioTide_Weather.c"
-
-#define COLOR_CONSOLE false
+#include "RadioTide_Weather_Tile.c"
 
 #endif

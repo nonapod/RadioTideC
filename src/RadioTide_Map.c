@@ -19,6 +19,7 @@ RadioTide_Map RadioTideMap_newMap() {
 
     rt_map.x = 0;
     rt_map.y = 0;
+    rt_map.tiles = NULL;
 
     // allocate memory for characteristic chances
     int rows = (int)CharacteristicEnumEnd;
@@ -107,6 +108,7 @@ void RadioTideMap_freeMapTiles(RadioTide_Map *rt_map) {
         }
 
         free(rt_map->tiles);
+        rt_map->tiles = NULL;
 
     }
 
@@ -121,6 +123,7 @@ void RadioTideMap_freeCharacteristicChances(RadioTide_Map *rt_map) {
 
     if (rt_map->characteristic_chance != NULL) {
         free(rt_map->characteristic_chance);
+        rt_map->characteristic_chance = NULL;
     }
 
 }

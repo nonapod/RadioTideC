@@ -21,8 +21,12 @@ int main() {
     // Create a weather map only when settled on a map
     RadioTide_Weather_Map rt_weather_map = RadioTideWeather_newWeatherMap(&rt_map);
 
+    RadioTideWeather_generateWeatherMap(&rt_weather_map);
+    RadioTideWeather_printWeatherMapToTerminal(&rt_weather_map);
 
 
+
+    // RadioTideWeather_releaseWeatherMap(&rt_weather_map);
     RadioTideMap_releaseMap(&rt_map);
 
     return 0;

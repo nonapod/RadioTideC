@@ -67,6 +67,13 @@ typedef enum WeatherType {
     WeatherTypeEnumEnd
 } WeatherType;
 
+typedef enum Direction {
+    UP_LEFT,   UP,   UP_RIGHT,
+    LEFT,            RIGHT,
+    DOWN_LEFT, DOWN, DOWN_RIGHT,
+    DirectionEnumEnd
+} Direction;
+
 typedef enum Season {
     SPRING,
     SUMMER,
@@ -122,6 +129,11 @@ struct RadioTide_Proximity_Struct {
 
 struct RadioTide_Weather_Tile_Struct {
 
+    char *name;
+    char term_display[TILE_TERM_DISPLAY_SIZE];
+    int temperature;
+    int view_modifier;
+    int movement_modifier;
     WeatherType type;
 
 } RadioTide_Weather_Tile_Default;
@@ -130,6 +142,7 @@ struct RadioTide_Weather_Struct {
 
     RadioTide_Map *rt_map;
     RadioTide_Weather_Tile **tiles;
+    Direction wind_direction;
     Season season;
 
 } RadioTide_Weather_Struct_Default;
