@@ -129,7 +129,7 @@ struct RadioTide_Proximity_Struct {
 
 struct RadioTide_Weather_Tile_Struct {
 
-    char *name;
+    char name[TILE_NAME_SIZE];
     char term_display[TILE_TERM_DISPLAY_SIZE];
     int temperature;
     int view_modifier;

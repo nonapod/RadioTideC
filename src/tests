@@ -1,0 +1,76 @@
+
+srand(time(NULL));
+
+RadioTide_Map rt_map = RadioTideMap_newMap();
+int x = 40;
+int y = 15;
+
+// Generate a map and print it
+RadioTideMap_generateMap(x, y, &rt_map);
+RadioTideMap_printMapToTerminal(&rt_map);
+
+// Create a weather map only when settled on a map
+RadioTide_Weather_Map rt_weather_map = RadioTideWeather_newWeatherMap(&rt_map);
+
+RadioTideWeather_generateWeatherMap(&rt_weather_map);
+RadioTideWeather_printWeatherMapToTerminal(&rt_weather_map);
+
+// RadioTideWeather_releaseWeatherMap(&rt_weather_map);
+RadioTideMap_releaseMap(&rt_map);
+
+
+// DOUBLY LINKED LIST TEST
+Node *node = initNode();
+node->data = "tits";
+node->append(node, "bollocks");
+node->append(node, "wank");
+node->append(node, "flange");
+node->append(node, "teapot");
+node->shift(&node);
+node->pop(&node);
+node->pop(&node);
+node->pop(&node);
+printf("%d\n", node->length(node));
+
+Node *current = node;
+while (current != NULL) {
+    printf("this: %s ", current->data);
+    if (current->next != NULL) {
+        printf("next: %s ", current->next->data);
+    }
+    if (current->prev != NULL) {
+        printf("prev: %s ", current->prev->data);
+    }
+    printf("\n");
+    current = current->next;
+}
+
+
+// KEYDICT TEST
+KeyDict *dict = initKeyDict();
+dict->insert("wank", "don't", dict);
+dict->insert("nob", "be", dict);
+dict->insert("fish", "a", dict);
+dict->insert("lips", "cunt", dict);
+
+KeyPair *keyPair1 = dict->find("wank", dict);
+KeyPair *keyPair2 = dict->find("nob", dict);
+KeyPair *keyPair3 = dict->find("fish", dict);
+KeyPair *keyPair4 = dict->find("lips", dict);
+printf("%s\n", keyPair1->data);
+printf("%s\n", keyPair2->data);
+printf("%s\n", keyPair3->data);
+printf("%s\n", keyPair4->data);
+
+dict->remove("lips", dict);
+KeyPair *keyPair5 = dict->find("lips", dict);
+if (keyPair5 != NULL) {
+    printf("%s\n", keyPair5->data);
+}
+
+dict->remove("nob", dict);
+KeyPair *keyPair6 = dict->find("nob", dict);
+if (keyPair6 != NULL) {
+    printf("%s\n", keyPair6->data);
+}
+

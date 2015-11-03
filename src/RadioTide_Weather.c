@@ -41,9 +41,66 @@ void RadioTideWeather_generateWeatherMap(RadioTide_Weather_Map *rt_weather_map) 
         rt_weather_map->tiles[y] = malloc(sizeof(RadioTide_Weather_Tile) * rt_weather_map->rt_map->x);
 
         for (int x = 0; x < rt_weather_map->rt_map->x; x++) {
+
+            // get and fill a new set of proximity parameters,
+            // add a new tile depending on tile proximity
+            RadioTide_Proximity rt_proximity;
+            RadioTideWeather_checkProximity(x, y, x, y, rt_weather_map, &rt_proximity);
+
             rt_weather_map->tiles[y][x] = RadioTideWeatherTile_getRandomTile();
+
         }
 
+    }
+
+}
+
+/**
+ * RadioTideWeather_checkProximity()
+ *
+ * checks all of the tiles surrounding a current tile position (x, y)
+ * to the current bounds of the tile set (x, y), if being used while
+ * building the map, the bounds will likely be the same as the position.
+ *
+ */
+void RadioTideWeather_checkProximity(int bound_x, int bound_y, int pos_x, int pos_y, RadioTide_Weather_Map *rt_weather_map, RadioTide_Proximity *rt_proximity) {
+
+    int UP = pos_y - 1;
+    int DOWN = pos_y + 1;
+    int LEFT = pos_x - 1;
+    int RIGHT = pos_x + 1;
+
+    strncpy(rt_proximity->center, rt_weather_map->tiles[pos_y][pos_x].name, TILE_NAME_SIZE);
+
+    // Straight proximity
+    if (UP >= 0 && UP <= bound_y) {
+        strncpy(rt_proximity->up, rt_weather_map->tiles[UP][pos_x].name, TILE_NAME_SIZE);
+    }
+    if (DOWN >= 0 && DOWN <= bound_y) {
+        strncpy(rt_proximity->down, rt_weather_map->tiles[DOWN][pos_x].name, TILE_NAME_SIZE);
+    }
+    if (LEFT >= 0 && LEFT <= bound_x) {
+        strncpy(rt_proximity->left, rt_weather_map->tiles[pos_y][LEFT].name, TILE_NAME_SIZE);
+    }
+    if (RIGHT >= 0 && RIGHT <= bound_x) {
+        strncpy(rt_proximity->right, rt_weather_map->tiles[pos_y][RIGHT].name, TILE_NAME_SIZE);
+    }
+
+    // Diagonal Proximity
+    if ((UP >= 0 && UP <= bound_y) && (LEFT >= 0 && LEFT <= bound_x)) {
+        strncpy(rt_proximity->up_left, rt_weather_map->tiles[UP][LEFT].name, TILE_NAME_SIZE);
+    }
+
+    if ((UP >= 0 && UP <= bound_y) && (RIGHT >= 0 && LEFT <= bound_x)) {
+        strncpy(rt_proximity->up_right, rt_weather_map->tiles[UP][RIGHT].name, TILE_NAME_SIZE);
+    }
+
+    if ((DOWN >= 0 && DOWN <= bound_y) && (LEFT >= 0 && LEFT <= bound_x)) {
+        strncpy(rt_proximity->down_left, rt_weather_map->tiles[DOWN][LEFT].name, TILE_NAME_SIZE);
+    }
+
+    if ((DOWN >= 0 && DOWN <= bound_y) && (RIGHT >= 0 && LEFT <= bound_x)) {
+        strncpy(rt_proximity->down_right, rt_weather_map->tiles[DOWN][RIGHT].name, TILE_NAME_SIZE);
     }
 
 }

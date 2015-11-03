@@ -111,7 +111,6 @@ RadioTide_Tile RadioTideTile_getRandomTileByProximity(RadioTide_Proximity *proxi
         }
 
     }
-    // exit(0);
 
     return map_tiles[final_tile_idx];
 }

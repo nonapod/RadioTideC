@@ -14,4 +14,6 @@ void RadioTideWeather_releaseWeatherMap(RadioTide_Weather_Map *rt_weather_map);
 
 void RadioTideWeather_printWeatherMapToTerminal(RadioTide_Weather_Map *rt_weather);
 
+void RadioTideWeather_checkProximity(int bound_x, int bound_y, int pos_x, int pos_y, RadioTide_Weather_Map *rt_weather_map, RadioTide_Proximity *rt_proximity);
+
 #endif
