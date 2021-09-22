@@ -1,7 +1,7 @@
 # RadioTide C
 
-This was the beginning of a C variant that I had originally made
-based off of the Python RadioTide project located here:
+This was the beginning of a C variant (built years ago back in 2014) 
+that I had originally made based off of the Python RadioTide project located here:
 https://github.com/nonapod/RadioTide
 
 This project requires the following repo:
