@@ -16,9 +16,17 @@ int main() {
     int y = 15;
 
     // Generate a map and print it
+    printf("Terrain Map\n");
+    printf("===========\n");
+    printf("\n");
     RadioTideMap_generateMap(x, y, &rt_map);
     RadioTideMap_printMapToTerminal(&rt_map);
 
+    printf("\n");
+
+    printf("Weather Map\n");
+    printf("===========\n");
+    printf("\n");
     // Create a weather map only when map is decided
     RadioTide_Weather_Map rt_weather_map = RadioTideWeather_newWeatherMap(&rt_map);
 
